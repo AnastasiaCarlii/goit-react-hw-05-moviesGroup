@@ -14,7 +14,7 @@ export const NavList = styled.nav`
   }
 `;
 
-export const NavLink = styled(NavLink)`
+export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
   &.active {
     color: orange;

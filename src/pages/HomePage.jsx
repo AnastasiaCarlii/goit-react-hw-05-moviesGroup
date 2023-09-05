@@ -1,3 +1,5 @@
+import { TrendingMoviesList } from 'components/TrendingMovies/TrendingMovies';
+
 export const HomePage = () => {
-  returns(<div>Тут Буде ТрендінгЛіст</div>);
+  return <TrendingMoviesList />;
 };

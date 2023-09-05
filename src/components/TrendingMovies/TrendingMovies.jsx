@@ -1,6 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
+
+import { fetchTrendingMovies } from 'services/api';
+
+import { Container, Title, ListOfFilms } from './TrendingMovies.styled';
 
 export const TrendingMoviesList = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -26,6 +29,15 @@ export const TrendingMoviesList = () => {
       {error && (
         <p>Something went wrong. Please reload the page to try again.</p>
       )}
+      <ListOfFilms>
+        {trendingMovies.map(trendingMovie => (
+          <li key={trendingMovie.id}>
+            <Link to={`movies/${trendingMovie.id}`} state={{ from: location }}>
+              {trendingMovie.title}
+            </Link>
+          </li>
+        ))}
+      </ListOfFilms>
     </Container>
   );
 };

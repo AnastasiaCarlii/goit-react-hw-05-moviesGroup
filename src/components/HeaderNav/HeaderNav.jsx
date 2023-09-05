@@ -1,4 +1,4 @@
-import { HeaderContainer, NavLink, NavList } from './HeaderNav.styled';
+import { HeaderContainer, NavLinkStyled, NavList } from './HeaderNav.styled';
 
 export const HeaderNav = () => {
   return (
@@ -6,10 +6,10 @@ export const HeaderNav = () => {
       <NavList>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLinkStyled to="/">Home</NavLinkStyled>
           </li>
           <li>
-            <NavLink to="/movies">Movies</NavLink>
+            <NavLinkStyled to="/movies">Movies</NavLinkStyled>
           </li>
         </ul>
       </NavList>
