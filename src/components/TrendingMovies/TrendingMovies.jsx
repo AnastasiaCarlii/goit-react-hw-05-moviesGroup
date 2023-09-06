@@ -1,23 +1,21 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import { fetchTrendingMovies } from 'services/api';
-
+import { getTrendingMovies } from 'services/api';
 import { Container, Title, ListOfFilms } from './TrendingMovies.styled';
 
 export const TrendingMoviesList = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const data = await fetchTrendingMovies();
-        const trendingMovies = data.results;
-        setTrendingMovies(trendingMovies);
+        const data = await getTrendingMovies();
+        setTrendingMovies(data.results);
       } catch (error) {
-        setError(error.message);
+        setError(error.message || 'An unexpected error occurred.');
       }
     };
     fetchMovies();
@@ -27,7 +25,9 @@ export const TrendingMoviesList = () => {
     <Container>
       <Title>Trending today</Title>
       {error && (
-        <p>Something went wrong. Please reload the page to try again.</p>
+        <p>
+          Something went wrong: {error}. Please reload the page to try again.
+        </p>
       )}
       <ListOfFilms>
         {trendingMovies.map(trendingMovie => (
